@@ -1,0 +1,16 @@
+# Archivos del sistema / IDE
+.vscode/
+.DS_Store
+
+# Logs
+*.log
+
+# Datos de base de datos
+mysql_data/
+
+# Archivos de entorno
+.env
+
+# Archivos temporales
+*.tmp
+*.bak
