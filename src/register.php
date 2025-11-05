@@ -6,15 +6,31 @@ $message = '';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $username = $_POST['username'];
   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  
+  if (!empty($username) && !empty($password)) {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
 
-  $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param("ss", $username, $password);
-
-  if ($stmt->execute()) {
-    $message = "Usuario registrado correctamente.";
+    if ($stmt) {
+      $stmt->bind_param("ss", $username, $hashedPassword);
+      try {
+        $stmt->execute();
+        $message = "✅ Usuario registrado correctamente.";
+      } catch (mysqli_sql_exception $e) {
+        // Código 1062 = entrada duplicada
+        if ($e->getCode() === 1062) {
+          $message = "⚠️ El usuario ya existe. Por favor elige otro nombre.";
+        } else {
+          $message = "⚠️ Error al registrar: " . $e->getMessage();
+        }
+      }
+      $stmt->close();
+    } else {
+      $message = "⚠️ Error al preparar la consulta: " . $conn->error;
+    }
   } else {
-    $message = "Error: " . $stmt->error;
+    $message = "Por favor completa todos los campos.";
   }
 }
 ?>
