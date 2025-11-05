@@ -28,7 +28,4 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "Error al crear la tabla: " . $conn->error;
 }
-
-// Cerrar conexión
-$conn->close();
 ?>
