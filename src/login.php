@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Single blank line
+ */
+
 require 'db.php';
 session_start();
 
@@ -27,18 +32,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Iniciar sesión</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<h2>Inicio de sesión</h2>
-<p><?= $message ?></p>
-<form method="POST">
-    <input type="text" name="username" placeholder="Usuario" required><br>
-    <input type="password" name="password" placeholder="Contraseña" required><br>
-    <button type="submit">Ingresar</button>
-</form>
-<a href="register.php">¿No tienes cuenta? Regístrate</a>
+    <h2>Inicio de sesión</h2>
+    <p><?= $message ?></p>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Usuario" required><br>
+        <input type="password" name="password" placeholder="Contraseña" required><br>
+        <button type="submit">Ingresar</button>
+    </form>
+    <a href="register.php">¿No tienes cuenta? Regístrate</a>
 </body>
+
 </html>

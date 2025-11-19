@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Single blank line
+ */
+
 $servername = getenv('MYSQL_HOST') ?: 'db';
 $username   = getenv('MYSQL_USER') ?: 'root';
 $password   = getenv('MYSQL_PASSWORD') ?: 'secret';
@@ -9,7 +14,7 @@ $conn = new mysqli($servername, $username, $password, $database);
 
 // Verificar conexión
 if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+  die("Error de conexión: " . $conn->connect_error);
 }
 
 // SQL para crear la tabla
@@ -28,4 +33,3 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "Error al crear la tabla: " . $conn->error;
 }
-?>
