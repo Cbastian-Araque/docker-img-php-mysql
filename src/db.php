@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS users (
 ";
 
 // Ejecutar la consulta
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) === true) {
     "Tabla 'users' creada correctamente.";
 } else {
     echo "Error al crear la tabla: " . $conn->error;
