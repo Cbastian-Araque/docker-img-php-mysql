@@ -2,7 +2,9 @@
 <phpunit bootstrap="vendor/autoload.php"
          colors="true"
          stderr="true"
-         verbose="true">
+         verbose="true"
+         beStrictAboutCoverage="false">
+
     <testsuites>
         <testsuite name="Application Test Suite">
             <directory>tests</directory>
