@@ -10,7 +10,11 @@ mysql_data/
 
 # Archivos de entorno
 .env
+composer.lock
 
 # Archivos temporales
 *.tmp
 *.bak
+
+# Vendor
+vendor/
